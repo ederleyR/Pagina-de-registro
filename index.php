@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $errores = $_SESSION['errores'] ?? [];
+  session_start();
+  $errores = $_SESSION['errores'] ?? [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,14 +21,14 @@
       <h1 class="text-4xl font-bold text-center text-white mb-8">REGÍSTRATE</h1>
     
       <form action="sesion.php" method="post" class="space-y-4">
+        
         <?php if (!empty($errores)): ?>
             <div class="bg-red-600/80 text-white p-3 rounded-lg border border-red-400">
                 <?php foreach ($errores as $e): ?>
-                    <p class="text-sm">• <?php echo $e; ?></p>
+                    <p class="text-sm"> <?php echo $e; ?></p>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-
         <input type="text" name="name" placeholder="Nombre" required
           class="bg-black/70 text-white w-full p-3 border border-gray-600 rounded-xl focus:ring-2 focus:ring-cyan-400 outline-none">
 
@@ -44,13 +44,22 @@
         <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 rounded-xl font-semibold hover:scale-105 transition shadow-lg">
           Registrarse
         </button>
+        
+      </form>
+      <br>
+      <form action="salir.php" method="post" class="space-y-4">
+        
         <button type="submit" class="w-full bg-gradient-to-r from-red-400 to-red-600 text-white py-3 rounded-xl font-semibold hover:scale-105 transition shadow-lg">
           Cerrar sesion
         </button>
       </form>
+
       <div style="color: white;">
         <?php 
-          print_r($_SESSION['debug_post']);  
+          if (!empty($_SESSION['debug_post'])){
+            print_r($_SESSION['debug_post']);  
+          }
+          echo "<br>";
           if (isset($_SESSION['Nombre']) && isset($_SESSION['email'])) {
             echo $_SESSION['Nombre'] . "<br>";
             echo $_SESSION['email'];
