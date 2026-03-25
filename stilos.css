@@ -1,0 +1,12 @@
+body{
+  background-color: rgb(0, 0, 0);
+}
+@keyframes fadeBackground {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade-bg {
+  animation: fadeBackground 15s infinite;
+}
